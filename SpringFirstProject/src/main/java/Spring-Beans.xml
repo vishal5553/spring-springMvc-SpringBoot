@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define your beans here -->
+    
+    
+    <bean id="creditCard"  class = "BillCollectorMethods.CreditCardPayment"/>
+    
+    <bean id="debitCard"  class = "BillCollectorMethods.DebitCardPayment"/>
+    
+    <bean id="upi"  class = "BillCollectorMethods.UpiPayment"/>
+    
+    <bean id="billCollector"  class = "BillCollectorMethods.BillCollector">
+    
+       <!-- this is for setter injection -->
+   <!--  <property name="payment" ref = "creditCard"/> -->
+    <!-- <property name="payment" ref = "upi"/>  -->
+    
+    
+    <!-- this is for Constructor injection -->
+    <constructor-arg name = "payment"  ref = "upi"/>
+    </bean>
+    
+</beans>
